@@ -1,0 +1,16 @@
+all: A-dec.exe
+
+A-dec.exe: makedirectory linux/main.o linux/Packaging.o
+	g++ -std=c++11 -o linux/A-dec.exe linux/main.o linux/Packaging.o
+
+linux/main.o: main.cpp
+	g++ -std=c++11 -o linux/main.o -c main.cpp
+
+linux/Packaging.o: Packaging.cpp
+	g++ -std=c++11 -o linux/Packaging.o -c Packaging.cpp
+
+makedirectory:
+	mkdir -p linux
+
+clean:
+	rm -rf linux
